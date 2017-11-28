@@ -15,7 +15,8 @@ describe("Shop", function () {
                     {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 11, quality: 20},
                     {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 10, quality: 20},
                     {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 5, quality: 20},
-                    {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 0, quality: 20}];
+                    {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 0, quality: 20},
+                    {name: "Aged Brie", sellIn: 0, quality: 20}];
       gildedRose = new Shop(mockItems);
       items = gildedRose.updateQuality();
     });
@@ -40,6 +41,11 @@ describe("Shop", function () {
       });
       it("should not increase quality value above 50", function () {
         expect(items[5].quality).toEqual(50);
+      });
+      describe("given it is passed expiry", function () {
+        it("should increase quality value by 2", function () {
+          expect(items[11].quality).toEqual(22);
+        });
       });
     });
     describe("given Sulfuras", function () {
