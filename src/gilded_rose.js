@@ -8,6 +8,7 @@ class Item {
   qualityTomorrow () {
     let qualityTomorrow = this.quality - this._calculateDepreciation();
     if (qualityTomorrow < 0) return 0;
+    if (qualityTomorrow >= 50) return 50;
     return qualityTomorrow;
   }
 
@@ -20,6 +21,12 @@ class AgedBrie extends Item {
   _calculateDepreciation () {
     return (-1);
   }
+};
+
+class Sulfuras extends Item {
+  _calculateDepreciation () {
+    return 0;
+  };
 };
 
 class Shop {
