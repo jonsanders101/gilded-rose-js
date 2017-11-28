@@ -2,7 +2,7 @@ class Item {
   constructor(name, sellIn, quality){
     this.name = name;
     this.sellIn = sellIn;
-    this.quality = this._validateMaxQuality(quality);
+    this.quality = quality;
   }
 
   qualityTomorrow () {
@@ -10,10 +10,6 @@ class Item {
     if (qualityTomorrow < 0) return 0;
     if (qualityTomorrow >= 50) return 50;
     return qualityTomorrow;
-  }
-
-  _validateMaxQuality (quality) {
-    return quality > 50 ? 50 : quality;
   }
 
   _calculateDepreciation () {
