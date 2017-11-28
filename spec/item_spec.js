@@ -45,8 +45,11 @@ describe("Item", function () {
       });
     });
     describe("given BackStagePass", function () {
-      describe("given it is within its sell-by date", function () {
-        it("should increase by 1");
+      describe("given there are more than 10 days until expiry", function () {
+        it("should increase by 1", function () {
+          var testItem = new BackStagePass('pass', 11, 20);
+          expect(testItem.qualityTomorrow()).toEqual(21);
+        });
       })
       describe("given 10 or fewer days until sell-by date", function () {
         it("should increase by 2");
