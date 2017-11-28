@@ -17,6 +17,8 @@ At a glance, there are numerous problems with this code. As a means of keeping t
 
 I test-drove a new method to calculate the value of an item tomorrow using a combination of the task specification and the existing legacy code. There were occasionally ambiguities or inconsistencies between the specification and the legacy code, but I incorporated these into the implementation of the `tomorrowQuality` method to ensure I was porting the same behaviour from the legacy code.
 
+Spec doesn't mention it, but brie depreciates by two after expiry. Again, incorporating it into my code to stay loyal to behaviour of source code
+
 ### Tasks done
 * Passed the initial failing test
 
