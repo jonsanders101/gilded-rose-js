@@ -10,7 +10,8 @@ describe("Shop", function () {
                     {name: "zero quality", sellIn: 1, quality: 0},
                     {name: "expired", sellIn: 0, quality: 10},
                     {name: "Aged Brie", sellIn: 10, quality: 10},
-                    {name: "Aged Brie", sellIn: 10, quality: 50}];
+                    {name: "Aged Brie", sellIn: 10, quality: 50},
+                    {name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 80}];
       gildedRose = new Shop(mockItems);
       items = gildedRose.updateQuality();
     });
@@ -35,6 +36,16 @@ describe("Shop", function () {
       });
       it("should not increase quality value above 50", function () {
         expect(items[5].quality).toEqual(50);
+      });
+    });
+    describe("given Sulfuras", function () {
+      it("should not change quality value", function () {
+        expect(items[6].quality).toEqual(80);
+      });
+      describe("given original quality is greater than 50", function () {
+        it("should not change quality value", function () {
+          expect(items[6].quality).toEqual(80);
+        });
       });
     });
     it("should return list with item name included", function() {
