@@ -2,10 +2,11 @@ describe("Shop", function () {
 
   describe('#updateQuality', function() {
 
-    var gildedRose, items;
+    var gildedRose, items, mockItem;
 
     beforeEach(function(){
-      gildedRose = new Shop([ new Item("foo", 1, 0) ]);
+      mockItem = {name: "foo", sellIn: 1, quality: 0};
+      gildedRose = new Shop([ mockItem ]);
       items = gildedRose.updateQuality();
     });
 
