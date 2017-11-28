@@ -11,7 +11,11 @@ describe("Shop", function () {
                     {name: "expired", sellIn: 0, quality: 10},
                     {name: "Aged Brie", sellIn: 10, quality: 10},
                     {name: "Aged Brie", sellIn: 10, quality: 50},
-                    {name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 80}];
+                    {name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 80},
+                    {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 11, quality: 20},
+                    {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 10, quality: 20},
+                    {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 5, quality: 20},
+                    {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 0, quality: 20}];
       gildedRose = new Shop(mockItems);
       items = gildedRose.updateQuality();
     });
@@ -48,21 +52,31 @@ describe("Shop", function () {
         });
       });
     });
+
+    describe("given BackStagePass", function () {
+      describe("given there are more than 10 days until expiry", function () {
+        it("should increase by 1", function () {
+          expect(items[7].quality).toEqual(21);
+        });
+      });
+      describe("given 10 or fewer days until sell-by date", function () {
+        it("should increase by 2", function () {
+          expect(items[8].quality).toEqual(22);
+        });
+      });
+      describe("given 5 or fewer days until sell-by date", function () {
+        it("should increase by 3", function () {
+          expect(items[9].quality).toEqual(23);
+        });
+      });
+      describe("given that concert has happened", function () {
+        it("should be zero", function () {
+          expect(items[10].quality).toEqual(0);
+        });
+      });
+    });
     it("should return list with item name included", function() {
       expect(items[0].name).toEqual("foo");
-    });
-    it('should not reduce quality to less than zero', function () {
-      expect(items[0].quality).toEqual(0);
-    });
-    describe('given the item is not Sulfuras', function () {
-      it('should reduce days to sell by one', function () {
-        expect(items[0].sellIn).toEqual(0);
-      });
-    });
-    describe('given the item is "Sulfuras"', function () {
-      it('should not reduce sellIn value', function () {
-        expect(items[1].sellIn).toEqual(1);
-      });
     });
   });
 });
