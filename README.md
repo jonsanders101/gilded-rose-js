@@ -29,3 +29,5 @@ At a glance, there are numerous problems with this code. As a means of keeping t
 * Creating new item types which are extensions from the standard item class
 * The guard against `quality` rising above 50 is part of the qualityTomorrow method, and therefore applies to all items. Though it won't affect all items currently, as standard items only depreciate in value, it is a principle related to all items. Also, placing this line in the `Item` class avoids repetition of the line in multiple classes whose `quality` does increase, and repetition of tests in each item.
 * The specification says `The Quality of an item is never more than 50`. I'm choosing to interpret this to mean that an item can't be instantiated with a value greater than 80. At the moment, this is corrected at the first `qualityTomorrow`.
+
+* Added `if (this.quality > 50) return this.quality;` to code which feels pointless, against my design, but loyal to the original code.
