@@ -16,8 +16,10 @@ describe("Shop", function () {
     it('should not reduce quality to less than zero', function () {
       expect(items[0].quality).toEqual(0);
     });
-    it('should reduce days to sell by one', function () {
-      expect(items[0].sellIn).toEqual(0);
+    describe('given the item is not Sulfuras', function () {
+      it('should reduce days to sell by one', function () {
+        expect(items[0].sellIn).toEqual(0);
+      });
     });
     describe('given the item is "Sulfuras"', function () {
       it('should not reduce sellIn value', function () {
