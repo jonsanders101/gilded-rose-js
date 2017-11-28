@@ -6,9 +6,13 @@ class Item {
   }
 
   qualityTomorrow () {
-    let qualityTomorrow = this.quality - 1;
+    let qualityTomorrow = this.quality - this._calculateDepreciation();
     if (qualityTomorrow < 0) return 0;
     return qualityTomorrow;
+  }
+
+  _calculateDepreciation () {
+    return 1;
   }
 }
 
