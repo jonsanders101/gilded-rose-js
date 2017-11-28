@@ -1,13 +1,5 @@
 describe("Item", function () {
 
-  describe("#new", function () {
-    it("should be initialised with a maximum quality of 50", function () {
-      var testItem = new Item('apple', 3, 51);
-      console.log(testItem.quality);
-      expect(testItem.quality).toEqual(50);
-    });
-  });
-
   describe("#qualityTomorrow", function () {
     it("should never be lower than zero", function () {
       var testItem = new Item('apple', 3, 0);
