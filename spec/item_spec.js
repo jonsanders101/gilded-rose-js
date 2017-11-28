@@ -52,7 +52,10 @@ describe("Item", function () {
         });
       })
       describe("given 10 or fewer days until sell-by date", function () {
-        it("should increase by 2");
+        it("should increase by 2", function () {
+          var testItem = new BackStagePass('pass', 10, 20);
+          expect(testItem.qualityTomorrow()).toEqual(22);
+        });
       })
       describe("given 5 or fewer days until sell-by date", function () {
         it("should increase by 3");

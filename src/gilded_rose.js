@@ -25,19 +25,19 @@ class AgedBrie extends Item {
   _calculateDepreciation () {
     return (-1);
   }
-};
+}
 
 class Sulfuras extends Item {
   _calculateDepreciation () {
     return 0;
-  };
-};
+  }
+}
 
 class BackStagePass extends Item {
   _calculateDepreciation () {
-    return (-1);
-  };
-};
+    return this.sellIn <= 10 ? (-2) : (-1);
+  }
+}
 
 class Shop {
   constructor(items=[]){
