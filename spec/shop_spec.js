@@ -8,7 +8,9 @@ describe("Shop", function () {
       mockItems =  [{name: "foo", sellIn: 1, quality: 1},
                     {name: "Sulfuras, Hand of Ragnaros", sellIn: 1, quality: 0},
                     {name: "zero quality", sellIn: 1, quality: 0},
-                    {name: "expired", sellIn: 0, quality: 10},];
+                    {name: "expired", sellIn: 0, quality: 10},
+                    {name: "Aged Brie", sellIn: 10, quality: 10},
+                    {name: "Aged Brie", sellIn: 10, quality: 50}];
       gildedRose = new Shop(mockItems);
       items = gildedRose.updateQuality();
     });
@@ -25,6 +27,14 @@ describe("Shop", function () {
         it("should by two less than current quality", function () {
           expect(items[3].quality).toEqual(8);
         });
+      });
+    });
+    describe("given AgedBrie", function () {
+      it("should increase quality value", function () {
+        expect(items[4].quality).toEqual(11);
+      });
+      it("should not increase quality value above 50", function () {
+        expect(items[5].quality).toEqual(50);
       });
     });
     it("should return list with item name included", function() {
