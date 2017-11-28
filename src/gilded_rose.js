@@ -12,7 +12,7 @@ class Item {
   }
 
   _calculateDepreciation () {
-    return 1;
+    return this.sellIn === 0 ? 2 : 1;
   }
 }
 
