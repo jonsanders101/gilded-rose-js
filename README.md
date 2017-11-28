@@ -25,3 +25,6 @@ At a glance, there are numerous problems with this code. As a means of keeping t
 * Should I think of my overall design to this project and slowly change the legacy code into that design, or pick small pieces and work on it incrementally?
 * `updateQuality` changes state; the program would be better designed if there were a separate function - like `tomorrowQuality` which gave a return value we could test
 * Instructions state '“Aged Brie” actually increases in Quality the older it gets', but it doesn't say what happens when it reaches expiry. I am going to choose
+* Writing my own logic before deleting previous logic
+* Creating new item types which are extensions from the standard item class
+* The guard against `quality` rising above 50 is part of the qualityTomorrow method, and therefore applies to all items. Though it won't affect all items currently, as standard items only depreciate in value, it is a principle related to all items. Also, placing this line in the `Item` class avoids repetition of the line in multiple classes whose `quality` does increase
