@@ -13,8 +13,8 @@ describe("Shop", function () {
     describe("given that item is not brie, sulfuras, backstage pass", function () {
       it("should reduce quality value by 1", function () {
         expect(items[0].quality).toEqual(0);
-      })
-    })
+      });
+    });
     it("should return list with item name included", function() {
       expect(items[0].name).toEqual("foo");
     });
@@ -31,5 +31,5 @@ describe("Shop", function () {
         expect(items[1].sellIn).toEqual(1);
       });
     });
-  })
+  });
 });
