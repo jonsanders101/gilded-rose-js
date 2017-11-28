@@ -61,7 +61,7 @@ describe("Item", function () {
           expect(testItem.qualityTomorrow()).toEqual(23);
         });
       });
-      describe("given that the item has expired", function () {
+      describe("given that concert has happened", function () {
         it("should be zero", function () {
           var testItem = new BackStagePass('pass', 0, 20);
           expect(testItem.qualityTomorrow()).toEqual(0);
