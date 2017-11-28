@@ -15,6 +15,8 @@ The more general aim of this kata is to refactor the legacy code to improve its 
 
 At a glance, there are numerous problems with this code. As a means of keeping track of the areas of the code I am focussing on improving, I will keep a small list here of observations I can work on and tasks already completed.
 
+I test-drove a new method to calculate the value of an item tomorrow using a combination of the task specification and the existing legacy code. There were occasionally ambiguities or inconsistencies between the specification and the legacy code, but I incorporated these into the implementation of the `tomorrowQuality` method to ensure I was porting the same behaviour from the legacy code.
+
 ### Tasks done
 * Passed the initial failing test
 
