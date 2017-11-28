@@ -5,11 +5,11 @@ describe("Shop", function () {
     var gildedRose, items, mockItem;
 
     beforeEach(function(){
-      mockItem = {name: "foo", sellIn: 1, quality: 0};
-      gildedRose = new Shop([ mockItem ]);
+      mockItems =  [{name: "foo", sellIn: 1, quality: 0},
+                    {name: "Sulfuras, Hand of Ragnaros", sellIn: 1, quality: 0}];
+      gildedRose = new Shop(mockItems);
       items = gildedRose.updateQuality();
     });
-
     it("should return list with item name", function() {
       expect(items[0].name).toEqual("foo");
     });
