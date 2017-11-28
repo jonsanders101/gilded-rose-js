@@ -4,6 +4,7 @@ describe("Item", function () {
       var testItem = new Item('apple', 3, 0);
       expect(testItem.qualityTomorrow()).toEqual(0);
     });
+
     describe("given the item is not brie, sulfuras, backstage pass or conjured", function () {
       describe("given the item is within its sell-by-date", function () {
         it("should by one less than current quality", function () {
@@ -16,6 +17,15 @@ describe("Item", function () {
           var testItem = new Item('apple', 0, 3);
           expect(testItem.qualityTomorrow()).toEqual(1);
         });
+      });
+    });
+
+    describe("given brie", function () {
+      it("should be one more than current quality", function () {
+        var testItem = new AgedBrie('brie', 1, 1);
+        console.log(testItem.qualityTomorrow());
+        console.log(testItem._calculateDepreciation());
+        expect(testItem.qualityTomorrow()).toEqual(2);
       });
     });
   });

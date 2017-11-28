@@ -24,3 +24,4 @@ At a glance, there are numerous problems with this code. As a means of keeping t
 * If an item is responsible for increasing its quality, the shop can invoke `updateQuality` on it without worrying about the conditions.
 * Should I think of my overall design to this project and slowly change the legacy code into that design, or pick small pieces and work on it incrementally?
 * `updateQuality` changes state; the program would be better designed if there were a separate function - like `tomorrowQuality` which gave a return value we could test
+* Instructions state '“Aged Brie” actually increases in Quality the older it gets', but it doesn't say what happens when it reaches expiry. I am going to choose

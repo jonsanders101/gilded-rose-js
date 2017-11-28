@@ -16,6 +16,12 @@ class Item {
   }
 }
 
+class AgedBrie extends Item {
+  _calculateDepreciation () {
+    return (-1);
+  }
+};
+
 class Shop {
   constructor(items=[]){
     this.items = items;
