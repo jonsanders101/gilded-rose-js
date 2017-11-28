@@ -20,7 +20,7 @@ describe("Item", function () {
       });
     });
 
-    describe("given AgedBried", function () {
+    describe("given AgedBrie", function () {
       it("should be one more than current quality", function () {
         var testItem = new AgedBrie('brie', 1, 1);
         expect(testItem.qualityTomorrow()).toEqual(2);
