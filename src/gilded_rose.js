@@ -20,7 +20,7 @@ class Item {
 
 class AgedBrie extends Item {
   _calculateDepreciation () {
-    return (-1);
+    return this.sellIn <= 0 ? (-2) : (-1);
   }
 }
 

@@ -29,6 +29,10 @@ describe("Item", function () {
         var testItem = new AgedBrie('brie', 3, 50);
         expect(testItem.qualityTomorrow()).toEqual(50);
       });
+      describe("given it is passed expiry", function () {
+        var testItem = new AgedBrie('brie', 0, 1);
+        expect(testItem.qualityTomorrow()).toEqual(3);
+      })
     });
     describe("given Sulfuras", function () {
       it("should not change quality value", function () {
