@@ -5,12 +5,17 @@ describe("Shop", function () {
     var gildedRose, items, mockItem;
 
     beforeEach(function(){
-      mockItems =  [{name: "foo", sellIn: 1, quality: 0},
+      mockItems =  [{name: "foo", sellIn: 1, quality: 1},
                     {name: "Sulfuras, Hand of Ragnaros", sellIn: 1, quality: 0}];
       gildedRose = new Shop(mockItems);
       items = gildedRose.updateQuality();
     });
-    it("should return list with item name", function() {
+    describe("given that item is not brie, sulfuras, backstage pass", function () {
+      it("should reduce quality value by 1", function () {
+        expect(items[0].quality).toEqual(0);
+      })
+    })
+    it("should return list with item name included", function() {
       expect(items[0].name).toEqual("foo");
     });
     it('should not reduce quality to less than zero', function () {

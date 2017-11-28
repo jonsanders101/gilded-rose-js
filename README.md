@@ -31,6 +31,11 @@ At a glance, there are numerous problems with this code. As a means of keeping t
 * The specification says `The Quality of an item is never more than 50`. I'm choosing to interpret this to mean that an item can't be instantiated with a value greater than 80. At the moment, this is corrected at the first `qualityTomorrow`.
 * Decided to work on a new branch 'update-quality' to begin refactoring the original `#updateQuality` method.
 * Noticed that sellIn doesn't decrease fo Sulfuras; it's not only the case that the sell-in is irrelevant
+* Checking against strings is less reliable and requires longer lines of code than checking type
+* My qualityTomorrow method correct the quality if it's above 80; it's arguable that it should do this because the specification states that quality should never be above 50. However, given that:
+* the previous program does not reduce the quality;
+* and there is no explicit instruction that quality values already higher than 50 should be reduced either at initialisation or when the quality is updated
+I'm going to change this
 
 Improve existing test
 * Replaced 'guilded rose spec' with separate specs for shop and item.
