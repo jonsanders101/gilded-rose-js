@@ -50,18 +50,24 @@ describe("Item", function () {
           var testItem = new BackStagePass('pass', 11, 20);
           expect(testItem.qualityTomorrow()).toEqual(21);
         });
-      })
+      });
       describe("given 10 or fewer days until sell-by date", function () {
         it("should increase by 2", function () {
           var testItem = new BackStagePass('pass', 10, 20);
           expect(testItem.qualityTomorrow()).toEqual(22);
         });
-      })
+      });
       describe("given 5 or fewer days until sell-by date", function () {
-        it("should increase by 3");
-      })
+        it("should increase by 3", function () {
+          var testItem = new BackStagePass('pass', 5, 20);
+          expect(testItem.qualityTomorrow()).toEqual(23);
+        });
+      });
       describe("given that the item has expired", function () {
-        it("should be zero");
+        it("should be zero", function () {
+          var testItem = new BackStagePass('pass', 0, 20);
+          expect(testItem.qualityTomorrow()).toEqual(0);
+        });
       })
     });
   });
