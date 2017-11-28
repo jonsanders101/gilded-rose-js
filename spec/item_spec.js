@@ -20,7 +20,7 @@ describe("Item", function () {
           expect(testItem.qualityTomorrow()).toEqual(2);
         });
       });
-      describe("given the item is past its sell-by-date", function () {
+      describe("given the item has expired", function () {
         it("should by two less than current quality", function () {
           var testItem = new Item('apple', 0, 3);
           expect(testItem.qualityTomorrow()).toEqual(1);
@@ -28,7 +28,7 @@ describe("Item", function () {
       });
     });
 
-    describe("given brie", function () {
+    describe("given AgedBried", function () {
       it("should be one more than current quality", function () {
         var testItem = new AgedBrie('brie', 1, 1);
         expect(testItem.qualityTomorrow()).toEqual(2);
@@ -38,11 +38,25 @@ describe("Item", function () {
         expect(testItem.qualityTomorrow()).toEqual(50);
       });
     });
-    describe("given sulfuras", function () {
+    describe("given Sulfuras", function () {
       it("should be zero", function () {
         var testItem = new Sulfuras('sulfuras', 1, 50);
         expect(testItem.qualityTomorrow()).toEqual(50);
       });
+    });
+    describe("given BackStagePass", function () {
+      describe("given it is within its sell-by date", function () {
+        it("should increase by 1");
+      })
+      describe("given 10 or fewer days until sell-by date", function () {
+        it("should increase by 2");
+      })
+      describe("given 5 or fewer days until sell-by date", function () {
+        it("should increase by 3");
+      })
+      describe("given that the item has expired", function () {
+        it("should be zero");
+      })
     });
   });
 });
