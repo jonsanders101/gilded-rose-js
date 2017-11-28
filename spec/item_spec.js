@@ -31,9 +31,15 @@ describe("Item", function () {
       });
     });
     describe("given Sulfuras", function () {
-      it("should be zero", function () {
+      it("should not change quality value", function () {
         var testItem = new Sulfuras('sulfuras', 1, 50);
         expect(testItem.qualityTomorrow()).toEqual(50);
+      });
+      describe("given original quality is greater than 50", function () {
+        it("should not change quality value", function () {
+          var testItem = new Sulfuras('sulfuras', 1, 80);
+          expect(testItem.qualityTomorrow()).toEqual(80);
+        });
       });
     });
     describe("given BackStagePass", function () {
@@ -55,7 +61,7 @@ describe("Item", function () {
           expect(testItem.qualityTomorrow()).toEqual(23);
         });
       });
-      describe("given that the item has expired", function () {
+      describe("given that concert has happened", function () {
         it("should be zero", function () {
           var testItem = new BackStagePass('pass', 0, 20);
           expect(testItem.qualityTomorrow()).toEqual(0);

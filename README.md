@@ -37,6 +37,8 @@ At a glance, there are numerous problems with this code. As a means of keeping t
 * and there is no explicit instruction that quality values already higher than 50 should be reduced either at initialisation or when the quality is updated
 I'm going to change this
 
+* Added `if (this.quality > 50) return this.quality;` to code which feels pointless, against my design, but loyal to the original code.
+
 Improve existing test
 * Replaced 'guilded rose spec' with separate specs for shop and item.
 * Replaced new Item with a mock
