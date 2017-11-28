@@ -19,5 +19,10 @@ describe("Shop", function () {
     it('should reduce days to sell by one', function () {
       expect(items[0].sellIn).toEqual(0);
     });
+    describe('given the item is "Sulfuras"', function () {
+      it('should not reduce sellIn value', function () {
+        expect(items[1].sellIn).toEqual(1);
+      });
+    });
   })
 });

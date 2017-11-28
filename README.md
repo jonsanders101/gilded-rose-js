@@ -30,6 +30,7 @@ At a glance, there are numerous problems with this code. As a means of keeping t
 * The guard against `quality` rising above 50 is part of the qualityTomorrow method, and therefore applies to all items. Though it won't affect all items currently, as standard items only depreciate in value, it is a principle related to all items. Also, placing this line in the `Item` class avoids repetition of the line in multiple classes whose `quality` does increase, and repetition of tests in each item.
 * The specification says `The Quality of an item is never more than 50`. I'm choosing to interpret this to mean that an item can't be instantiated with a value greater than 80. At the moment, this is corrected at the first `qualityTomorrow`.
 * Decided to work on a new branch 'update-quality' to begin refactoring the original `#updateQuality` method.
+* Noticed that sellIn doesn't decrease fo Sulfuras; it's not only the case that the sell-in is irrelevant
 
 Improve existing test
 * Replaced 'guilded rose spec' with separate specs for shop and item.
