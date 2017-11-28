@@ -4,6 +4,10 @@ class Item {
     this.sellIn = sellIn;
     this.quality = quality;
   }
+
+  qualityTomorrow () {
+    return 2;
+  }
 }
 
 class Shop {
