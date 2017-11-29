@@ -5,18 +5,18 @@ describe("Shop", function () {
     var gildedRose, items, mockItem;
 
     beforeEach(function(){
-      mockItems =  [{name: "foo", sellIn: 1, quality: 1},
+      mockItems =  [{name: "foo", sellIn: 1, quality: 1, qualityTomorrow: () => {return 0}},
                     {name: "Sulfuras, Hand of Ragnaros", sellIn: 1, quality: 0},
-                    {name: "zero quality", sellIn: 1, quality: 0},
-                    {name: "expired", sellIn: 0, quality: 10},
-                    {name: "Aged Brie", sellIn: 10, quality: 10},
-                    {name: "Aged Brie", sellIn: 10, quality: 50},
-                    {name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 80},
-                    {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 11, quality: 20},
-                    {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 10, quality: 20},
-                    {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 5, quality: 20},
-                    {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 0, quality: 20},
-                    {name: "Aged Brie", sellIn: 0, quality: 20}];
+                    {name: "zero quality", sellIn: 1, quality: 0, qualityTomorrow: () => {return 0}},
+                    {name: "expired", sellIn: 0, quality: 10, qualityTomorrow: () => {return 8}},
+                    {name: "Aged Brie", sellIn: 10, quality: 10, qualityTomorrow: () => {return 11}},
+                    {name: "Aged Brie", sellIn: 10, quality: 50, qualityTomorrow: () => {return 50}},
+                    {name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 80, qualityTomorrow: () => {return 22}},
+                    {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 11, quality: 20, qualityTomorrow: () => {return 21}},
+                    {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 10, quality: 20, qualityTomorrow: () => {return 22}},
+                    {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 5, quality: 20, qualityTomorrow: () => {return 23}},
+                    {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 0, quality: 20, qualityTomorrow: () => {return 0}},
+                    {name: "Aged Brie", sellIn: 0, quality: 20, qualityTomorrow: () => {return 22}}];
       gildedRose = new Shop(mockItems);
       items = gildedRose.updateQuality();
     });
