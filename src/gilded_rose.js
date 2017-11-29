@@ -60,10 +60,9 @@ class Shop {
   }
 
   updateStock (items) {
-    items.forEach(function(item) {
-      item = item.itemTomorrow(item);
+    return items.map(function(item) {
+      return item.itemTomorrow();
     });
-    return items;
   }
 
   updateQuality() {
