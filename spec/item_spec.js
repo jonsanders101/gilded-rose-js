@@ -1,8 +1,16 @@
 describe("Item", function () {
+  var testItem = new Item('apple', 3, 0);
+  
+  describe('#itemTomorrow', function () {
+    describe('given that it is not sulfuras', function () {
+      it('should reduce sellIn value by one', function () {
+        expect(testItem.itemTomorrow().sellIn).toEqual(2)
+      });
+    });
+  });
 
   describe("#qualityTomorrow", function () {
     it("should never be lower than zero", function () {
-      var testItem = new Item('apple', 3, 0);
       expect(testItem.qualityTomorrow()).toEqual(0);
     });
     describe("given the item is not brie, sulfuras, backstage pass or conjured", function () {

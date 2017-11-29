@@ -11,13 +11,18 @@ describe("Shop", function () {
                     {name: "Aged Brie", sellIn: 10, quality: 10, qualityTomorrow: () => {return 11}},
                     {name: "Aged Brie", sellIn: 10, quality: 50, qualityTomorrow: () => {return 50}},
                     {name: "Aged Brie", sellIn: 0, quality: 20, qualityTomorrow: () => {return 22}},
-                    {name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 80, qualityTomorrow: () => {return 80}},
+                    {name: "Sulfuras, Hand of Ragnaros", sellIn: 1, quality: 80, qualityTomorrow: () => {return 80}},
                     {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 11, quality: 20, qualityTomorrow: () => {return 21}},
                     {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 10, quality: 20, qualityTomorrow: () => {return 22}},
                     {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 5, quality: 20, qualityTomorrow: () => {return 23}},
                     {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 0, quality: 20, qualityTomorrow: () => {return 0}}];
       gildedRose = new Shop(mockItems);
       items = gildedRose.updateQuality();
+    });
+    describe("given the item is not Sulfuras", function () {
+      it("should decrease sellIn value by one", function () {
+          expect(items[0].sellIn).toEqual(0)
+      });
     });
     it("should return list with item name included", function() {
       expect(items[0].name).toEqual("foo");
@@ -53,6 +58,9 @@ describe("Shop", function () {
     describe("given Sulfuras", function () {
       it("should not change quality value", function () {
         expect(items[6].quality).toEqual(80);
+      });
+      it("should not reduce sellIn value", function () {
+        expect(items[6].sellIn).toEqual(1);
       });
       describe("given original quality is greater than 50", function () {
         it("should not change quality value", function () {
