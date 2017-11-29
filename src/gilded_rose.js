@@ -69,11 +69,7 @@ class Shop {
         this.items[i].sellIn = this.items[i].sellIn - 1;
       }
       if (this.items[i].sellIn < 0) {
-        if (this.items[i].name != 'Aged Brie') {
-          this.items[i].quality = this.items[i].qualityTomorrow();
-        } else {
-            this.items[i].quality = this.items[i].qualityTomorrow();
-        }
+        this.items[i].quality = this.items[i].qualityTomorrow();
       }
     }
 
