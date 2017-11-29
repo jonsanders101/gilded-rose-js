@@ -42,6 +42,19 @@ describe("Shop", function () {
         });
       });
     });
+    describe("given AgedBrie", function () {
+      it("should increase quality value", function () {
+        expect(itemsTomorrow[3].quality).toEqual(11);
+      });
+      it("should not increase quality value above 50", function () {
+        expect(itemsTomorrow[4].quality).toEqual(50);
+      });
+      describe("given it is passed expiry", function () {
+        it("should increase quality value by 2", function () {
+          expect(itemsTomorrow[5].quality).toEqual(22);
+        });
+      });
+    });
   });
 
   describe('#updateQuality', function() {
@@ -63,19 +76,6 @@ describe("Shop", function () {
       gildedRose = new Shop(mockItems);
       itemsTomorrow = gildedRose.updateStock(mockItems);
       items = gildedRose.updateQuality();
-    });
-    describe("given AgedBrie", function () {
-      it("should increase quality value", function () {
-        expect(items[3].quality).toEqual(11);
-      });
-      it("should not increase quality value above 50", function () {
-        expect(items[4].quality).toEqual(50);
-      });
-      describe("given it is passed expiry", function () {
-        it("should increase quality value by 2", function () {
-          expect(items[5].quality).toEqual(22);
-        });
-      });
     });
     describe("given Sulfuras", function () {
       it("should not change quality value", function () {
