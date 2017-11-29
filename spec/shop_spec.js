@@ -1,9 +1,12 @@
 describe("Shop", function () {
 
   describe('#updateStock', function () {
-    var gildedRose, items, mockItems, itemsTomorrow;
+    var gildedRose, items, mockItems, itemsTomorrow, itemSpy;
 
     beforeEach(function(){
+      itemSpy = {name: "foo", sellIn: 1, quality: 1, qualityTomorrow: () => {return 0;}, itemTomorrow: () => {return {name: "foo", sellIn: 0, quality: 0}}};
+      spyOn(itemSpy, "itemTomorrow");
+
       mockItems =  [{name: "foo", sellIn: 1, quality: 1, qualityTomorrow: () => {return 0}, itemTomorrow: () => {return {name: "foo", sellIn: 0, quality: 0}}},
                     {name: "zero quality", sellIn: 1, quality: 0, qualityTomorrow: () => {return 0}, itemTomorrow: () => {return {name: "zero quality", sellIn: 0, quality: 0}}},
                     {name: "expired", sellIn: 0, quality: 10, qualityTomorrow: () => {return 8}, itemTomorrow: () => {return {name: "expired", sellIn: 0, quality: 8}}},
@@ -14,10 +17,15 @@ describe("Shop", function () {
                     {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 11, quality: 20, qualityTomorrow: () => {return 21}, itemTomorrow: () => {return {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 10, quality: 21}}},
                     {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 10, quality: 20, qualityTomorrow: () => {return 22}, itemTomorrow: () => {return {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 9, quality: 22}}},
                     {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 5, quality: 20, qualityTomorrow: () => {return 23}, itemTomorrow: () => {return {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 4, quality: 23}}},
-                    {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 0, quality: 20, qualityTomorrow: () => {return 0}, itemTomorrow: () => {return {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: -1, quality: 0}}}];
+                    {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 0, quality: 20, qualityTomorrow: () => {return 0}, itemTomorrow: () => {return {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: -1, quality: 0}}},
+                    itemSpy];
       gildedRose = new Shop(mockItems);
       itemsTomorrow = gildedRose.updateStock(mockItems);
     });
+
+    it("should call #itemTomorrow on each item", function () {
+      expect(itemSpy.itemTomorrow).toHaveBeenCalled();
+    })
 
     describe("given the item is not Sulfuras", function () {
       it("should decrease sellIn value by one", function () {
