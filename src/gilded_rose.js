@@ -6,6 +6,7 @@ class Item {
   }
 
   itemTomorrow() {
+    this.quality = this.qualityTomorrow();
     this.sellIn--;
     return this;
   }
