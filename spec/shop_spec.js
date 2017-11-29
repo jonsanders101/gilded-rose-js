@@ -11,7 +11,7 @@ describe("Shop", function () {
                     {name: "Aged Brie", sellIn: 10, quality: 10, qualityTomorrow: () => {return 11}},
                     {name: "Aged Brie", sellIn: 10, quality: 50, qualityTomorrow: () => {return 50}},
                     {name: "Aged Brie", sellIn: 0, quality: 20, qualityTomorrow: () => {return 22}},
-                    {name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 80, qualityTomorrow: () => {return 22}},
+                    {name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 80, qualityTomorrow: () => {return 80}},
                     {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 11, quality: 20, qualityTomorrow: () => {return 21}},
                     {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 10, quality: 20, qualityTomorrow: () => {return 22}},
                     {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 5, quality: 20, qualityTomorrow: () => {return 23}},
