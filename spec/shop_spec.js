@@ -24,11 +24,12 @@ describe("Shop", function () {
           expect(itemsTomorrow[0].sellIn).toEqual(0);
       });
     });
-
     it("should return list with item name included", function() {
       expect(itemsTomorrow[0].name).toEqual("foo");
     });
-
+    it("should not reduce quality below zero", function () {
+      expect(itemsTomorrow[0].quality).toEqual(0);
+    });
   });
 
   describe('#updateQuality', function() {
@@ -50,10 +51,6 @@ describe("Shop", function () {
       gildedRose = new Shop(mockItems);
       itemsTomorrow = gildedRose.updateStock(mockItems);
       items = gildedRose.updateQuality();
-    });
-
-    it("should not reduce quality below zero", function () {
-      expect(items[1].quality).toEqual(0);
     });
     describe("given the item is not brie, sulfuras, backstage pass or conjured", function () {
       describe("given the item is within its sell-by-date", function () {
