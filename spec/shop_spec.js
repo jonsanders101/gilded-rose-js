@@ -52,9 +52,6 @@ describe("Shop", function () {
       items = gildedRose.updateQuality();
     });
 
-    it("should return list with item name included", function() {
-      expect(items[0].name).toEqual("foo");
-    });
     it("should not reduce quality below zero", function () {
       expect(items[1].quality).toEqual(0);
     });
