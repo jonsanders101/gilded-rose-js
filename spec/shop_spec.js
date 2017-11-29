@@ -25,6 +25,10 @@ describe("Shop", function () {
       });
     });
 
+    it("should return list with item name included", function() {
+      expect(itemsTomorrow[0].name).toEqual("foo");
+    });
+
   });
 
   describe('#updateQuality', function() {
