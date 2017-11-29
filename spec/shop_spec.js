@@ -27,13 +27,6 @@ describe("Shop", function () {
       });
     });
 
-
-
-    describe("given the item is not Sulfuras", function () {
-      it("should decrease sellIn value by one", function () {
-          expect(items[0].sellIn).toEqual(0)
-      });
-    });
     it("should return list with item name included", function() {
       expect(items[0].name).toEqual("foo");
     });
