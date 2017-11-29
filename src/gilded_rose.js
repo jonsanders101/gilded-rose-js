@@ -59,6 +59,13 @@ class Shop {
     this.items = items;
   }
 
+  updateStock (items) {
+    items.forEach(function(item) {
+      item = item.itemTomorrow(item);
+    });
+    return items;
+  }
+
   updateQuality() {
     for (var i = 0; i < this.items.length; i++) {
       this.items[i].quality = this.items[i].qualityTomorrow();
