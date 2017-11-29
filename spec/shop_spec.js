@@ -68,6 +68,28 @@ describe("Shop", function () {
         });
       });
     });
+    describe("given BackStagePass", function () {
+      describe("given there are more than 10 days until expiry", function () {
+        it("should increase by 1", function () {
+          expect(itemsTomorrow[7].quality).toEqual(21);
+        });
+      });
+      describe("given 10 or fewer days until sell-by date", function () {
+        it("should increase by 2", function () {
+          expect(itemsTomorrow[8].quality).toEqual(22);
+        });
+      });
+      describe("given 5 or fewer days until sell-by date", function () {
+        it("should increase by 3", function () {
+          expect(itemsTomorrow[9].quality).toEqual(23);
+        });
+      });
+      describe("given that concert has happened", function () {
+        it("should be zero", function () {
+          expect(itemsTomorrow[10].quality).toEqual(0);
+        });
+      });
+    });
   });
 
   describe('#updateQuality', function() {
@@ -89,28 +111,6 @@ describe("Shop", function () {
       gildedRose = new Shop(mockItems);
       itemsTomorrow = gildedRose.updateStock(mockItems);
       items = gildedRose.updateQuality();
-    });
-    describe("given BackStagePass", function () {
-      describe("given there are more than 10 days until expiry", function () {
-        it("should increase by 1", function () {
-          expect(items[7].quality).toEqual(21);
-        });
-      });
-      describe("given 10 or fewer days until sell-by date", function () {
-        it("should increase by 2", function () {
-          expect(items[8].quality).toEqual(22);
-        });
-      });
-      describe("given 5 or fewer days until sell-by date", function () {
-        it("should increase by 3", function () {
-          expect(items[9].quality).toEqual(23);
-        });
-      });
-      describe("given that concert has happened", function () {
-        it("should be zero", function () {
-          expect(items[10].quality).toEqual(0);
-        });
-      });
     });
   });
 });
