@@ -30,6 +30,18 @@ describe("Shop", function () {
     it("should not reduce quality below zero", function () {
       expect(itemsTomorrow[0].quality).toEqual(0);
     });
+    describe("given the item is not brie, sulfuras, backstage pass or conjured", function () {
+      describe("given the item is within its sell-by-date", function () {
+        it("item quality should be reduced by 1", function () {
+          expect(itemsTomorrow[0].quality).toEqual(0);
+        });
+      });
+      describe("given the item has expired", function () {
+        it("should be two less than current quality", function () {
+          expect(itemsTomorrow[2].quality).toEqual(8);
+        });
+      });
+    });
   });
 
   describe('#updateQuality', function() {
@@ -51,18 +63,6 @@ describe("Shop", function () {
       gildedRose = new Shop(mockItems);
       itemsTomorrow = gildedRose.updateStock(mockItems);
       items = gildedRose.updateQuality();
-    });
-    describe("given the item is not brie, sulfuras, backstage pass or conjured", function () {
-      describe("given the item is within its sell-by-date", function () {
-        it("item quality should be reduced by 1", function () {
-          expect(items[0].quality).toEqual(0);
-        });
-      });
-      describe("given the item has expired", function () {
-        it("should be two less than current quality", function () {
-          expect(items[2].quality).toEqual(8);
-        });
-      });
     });
     describe("given AgedBrie", function () {
       it("should increase quality value", function () {
