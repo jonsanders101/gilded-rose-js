@@ -58,10 +58,7 @@ class Shop {
           }
         }
       } else {
-        if (this.items[i].quality < 50) {
-          this.items[i].quality = this.items[i].quality + 1;
           this.items[i].quality = this.items[i].qualityTomorrow();
-        }
       }
       if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
         this.items[i].sellIn = this.items[i].sellIn - 1;
