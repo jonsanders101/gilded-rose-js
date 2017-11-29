@@ -6,12 +6,12 @@ class Item {
   }
 
   itemTomorrow() {
-    this.quality = this.qualityTomorrow();
+    this.quality = this._qualityTomorrow();
     this.sellIn--;
     return this;
   }
 
-  qualityTomorrow () {
+  _qualityTomorrow () {
     if (this.quality > 50) return this.quality;
     let qualityTomorrow = this.quality - this._calculateDepreciation();
     if (qualityTomorrow < 0) return 0;
