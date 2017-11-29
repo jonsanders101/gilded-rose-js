@@ -55,6 +55,19 @@ describe("Shop", function () {
         });
       });
     });
+    describe("given Sulfuras", function () {
+      it("should not change quality value", function () {
+        expect(itemsTomorrow[6].quality).toEqual(80);
+      });
+      it("should not reduce sellIn value", function () {
+        expect(itemsTomorrow[6].sellIn).toEqual(1);
+      });
+      describe("given original quality is greater than 50", function () {
+        it("should not change quality value", function () {
+          expect(itemsTomorrow[6].quality).toEqual(80);
+        });
+      });
+    });
   });
 
   describe('#updateQuality', function() {
@@ -77,20 +90,6 @@ describe("Shop", function () {
       itemsTomorrow = gildedRose.updateStock(mockItems);
       items = gildedRose.updateQuality();
     });
-    describe("given Sulfuras", function () {
-      it("should not change quality value", function () {
-        expect(items[6].quality).toEqual(80);
-      });
-      it("should not reduce sellIn value", function () {
-        expect(items[6].sellIn).toEqual(1);
-      });
-      describe("given original quality is greater than 50", function () {
-        it("should not change quality value", function () {
-          expect(items[6].quality).toEqual(80);
-        });
-      });
-    });
-
     describe("given BackStagePass", function () {
       describe("given there are more than 10 days until expiry", function () {
         it("should increase by 1", function () {
