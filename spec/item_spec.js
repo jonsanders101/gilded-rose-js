@@ -32,7 +32,7 @@ describe("Item", function () {
         });
       });
       describe("given the item has expired", function () {
-        it("should by two less than current quality", function () {
+        it("should be two less than current quality", function () {
           var testItem = new Item('apple', 0, 3);
           expect(testItem.qualityTomorrow()).toEqual(1);
         });
