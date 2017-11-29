@@ -33,6 +33,10 @@ class Sulfuras extends Item {
   _calculateDepreciation () {
     return 0;
   }
+
+  itemTomorrow(){
+    return this;
+  }
 }
 
 class BackStagePass extends Item {
