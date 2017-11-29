@@ -80,9 +80,7 @@ class Shop {
             this.items[i].quality = this.items[i].qualityTomorrow();
           }
         } else {
-          if (this.items[i].quality < 50) {
             this.items[i].quality = this.items[i].qualityTomorrow();
-          }
         }
       }
     }
