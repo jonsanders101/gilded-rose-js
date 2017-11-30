@@ -11,6 +11,7 @@
 <script type="text/javascript" src="src/AgedBrie.js"></script>
 <script type="text/javascript" src="src/BackStagePass.js"></script>
 <script type="text/javascript" src="src/Shop.js"></script>
+<script type="text/javascript" src="src/ConjuredItem.js"></script>
 
 <script type="text/javascript">
   $( document ).ready(function() {
@@ -27,8 +28,7 @@
     items.push(new BackStagePass('Backstage passes to a TAFKAL80ETC concert', 15, 20));
     items.push(new BackStagePass('Backstage passes to a TAFKAL80ETC concert', 10, 49));
     items.push(new BackStagePass('Backstage passes to a TAFKAL80ETC concert', 5, 49));
-    // this conjured item does not work properly yet
-    items.push(new StandardItem('Conjured Mana Cake', 3, 6));
+    items.push(new ConjuredItem('Conjured Mana Cake', 3, 6));
 
 
     gildedRose = new Shop(items);
