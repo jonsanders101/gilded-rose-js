@@ -67,30 +67,24 @@ describe('StandardItem', function () {
   });
 
   describe('#itemTomorrow', function () {
-    describe('given that it is not sulfuras', function () {
-      it('should reduce sellIn value by one', function () {
+    it('reduces sellIn value by 1', function () {
+      expect(testItem.itemTomorrow().sellIn).toEqual(2);
+    });
+    it('reduces quality value to a minimum of 0', function () {
+      expect(testItem.itemTomorrow().quality).toEqual(0);
+    });
+    describe('given that the sellIn value is greater than 0', function () {
+      it('reduces quality value by 1', function () {
+        testItem.quality = 3;
         expect(testItem.itemTomorrow().sellIn).toEqual(2);
       });
     });
-    describe("#qualityTomorrow", function () {
-      it("should never be lower than zero", function () {
-        expect(testItem.itemTomorrow().quality).toEqual(0);
+    describe('given that the sellIn value is 0 or less', function () {
+      it('increases quality value by 2', function () {
+        testItem.quality = 3;
+        testItem.sellIn = 0;
+        expect(testItem.itemTomorrow().quality).toEqual(1);
       });
-      describe("given the item is not brie, sulfuras, backstage pass or conjured", function () {
-        describe("given the item is within its sell-by-date", function () {
-          it("should by one less than current quality", function () {
-            var testItem = new StandardItem('apple', 3, 3);
-            expect(testItem.itemTomorrow().quality).toEqual(2);
-          });
-        });
-        describe("given the item has expired", function () {
-          it("should be two less than current quality", function () {
-            var testItem = new StandardItem('apple', 0, 3);
-            expect(testItem.itemTomorrow().quality).toEqual(1);
-          });
-        });
-      });
-
     });
   });
 });
