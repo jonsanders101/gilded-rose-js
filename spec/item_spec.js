@@ -1,12 +1,12 @@
 describe('Sulfuras', function () {
   describe('#itemTomorrow', function () {
-    var testItem = new Sulfuras('sulfuras', 1, 80);
+    var testSulfuras = new Sulfuras('sulfuras', 1, 80);
 
     it('does not reduce sellIn value', function () {
-      expect(testItem.itemTomorrow().sellIn).toEqual(1);
+      expect(testSulfuras.itemTomorrow().sellIn).toEqual(1);
     });
     it("does not change quality value", function () {
-      expect(testItem.itemTomorrow().quality).toEqual(80);
+      expect(testSulfuras.itemTomorrow().quality).toEqual(80);
     });
   });
 });
