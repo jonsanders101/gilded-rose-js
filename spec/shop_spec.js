@@ -1,13 +1,14 @@
 describe("Shop", function () {
 
   describe('#updateStock', function () {
-    var gildedRose, items, mockItems, itemsTomorrow, itemSpy;
+    var gildedRose, items, mockItems, itemsTomorrow, itemSpy, itemTomorrow;
 
     beforeEach(function(){
-      itemSpy = {name: "foo", sellIn: 1, quality: 1, qualityTomorrow: () => {return 0;}, itemTomorrow: () => {return {name: "foo", sellIn: 0, quality: 0}}};
+      itemTomorrow = {name: "foo", sellIn: 0, quality: 0};
+      itemSpy = {name: "foo", sellIn: 1, quality: 1, qualityTomorrow: () => {return 0;}, itemTomorrow: () => {return {};}};
       spyOn(itemSpy, "itemTomorrow");
 
-      mockItems =  [{name: "foo", sellIn: 1, quality: 1, qualityTomorrow: () => {return 0}, itemTomorrow: () => {return {name: "foo", sellIn: 0, quality: 0}}},
+      mockItems =  [{name: "foo", sellIn: 1, quality: 1, qualityTomorrow: () => {return 0}, itemTomorrow: () => {return itemTomorrow}},
                     {name: "zero quality", sellIn: 1, quality: 0, qualityTomorrow: () => {return 0}, itemTomorrow: () => {return {name: "zero quality", sellIn: 0, quality: 0}}},
                     {name: "expired", sellIn: 0, quality: 10, qualityTomorrow: () => {return 8}, itemTomorrow: () => {return {name: "expired", sellIn: 0, quality: 8}}},
                     {name: "Aged Brie", sellIn: 10, quality: 10, qualityTomorrow: () => {return 11}, itemTomorrow: () => {return {name: "Aged Brie", sellIn: 9, quality: 11}}},
@@ -21,82 +22,11 @@ describe("Shop", function () {
                     itemSpy];
       gildedRose = new Shop(mockItems);
       itemsTomorrow = gildedRose.updateStock(mockItems);
+      console.log(itemsTomorrow);
     });
 
     it("should call #itemTomorrow on each item", function () {
       expect(itemSpy.itemTomorrow).toHaveBeenCalled();
-    })
-
-    describe("given the item is not Sulfuras", function () {
-      it("should decrease sellIn value by one", function () {
-          expect(itemsTomorrow[0].sellIn).toEqual(0);
-      });
-    });
-    it("should return list with item name included", function() {
-      expect(itemsTomorrow[0].name).toEqual("foo");
-    });
-    it("should not reduce quality below zero", function () {
-      expect(itemsTomorrow[0].quality).toEqual(0);
-    });
-    describe("given the item is not brie, sulfuras, backstage pass or conjured", function () {
-      describe("given the item is within its sell-by-date", function () {
-        it("item quality should be reduced by 1", function () {
-          expect(itemsTomorrow[0].quality).toEqual(0);
-        });
-      });
-      describe("given the item has expired", function () {
-        it("should be two less than current quality", function () {
-          expect(itemsTomorrow[2].quality).toEqual(8);
-        });
-      });
-    });
-    describe("given AgedBrie", function () {
-      it("should increase quality value", function () {
-        expect(itemsTomorrow[3].quality).toEqual(11);
-      });
-      it("should not increase quality value above 50", function () {
-        expect(itemsTomorrow[4].quality).toEqual(50);
-      });
-      describe("given it is passed expiry", function () {
-        it("should increase quality value by 2", function () {
-          expect(itemsTomorrow[5].quality).toEqual(22);
-        });
-      });
-    });
-    describe("given Sulfuras", function () {
-      it("should not change quality value", function () {
-        expect(itemsTomorrow[6].quality).toEqual(80);
-      });
-      it("should not reduce sellIn value", function () {
-        expect(itemsTomorrow[6].sellIn).toEqual(1);
-      });
-      describe("given original quality is greater than 50", function () {
-        it("should not change quality value", function () {
-          expect(itemsTomorrow[6].quality).toEqual(80);
-        });
-      });
-    });
-    describe("given BackStagePass", function () {
-      describe("given there are more than 10 days until expiry", function () {
-        it("should increase by 1", function () {
-          expect(itemsTomorrow[7].quality).toEqual(21);
-        });
-      });
-      describe("given 10 or fewer days until sell-by date", function () {
-        it("should increase by 2", function () {
-          expect(itemsTomorrow[8].quality).toEqual(22);
-        });
-      });
-      describe("given 5 or fewer days until sell-by date", function () {
-        it("should increase by 3", function () {
-          expect(itemsTomorrow[9].quality).toEqual(23);
-        });
-      });
-      describe("given that concert has happened", function () {
-        it("should be zero", function () {
-          expect(itemsTomorrow[10].quality).toEqual(0);
-        });
-      });
     });
   });
 });
