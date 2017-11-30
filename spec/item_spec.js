@@ -1,3 +1,16 @@
+describe('Sulfuras', function () {
+  describe('#itemTomorrow', function () {
+    var testItem = new Sulfuras('sulfuras', 1, 80);
+
+    it('does not reduce sellIn value', function () {
+      expect(testItem.itemTomorrow().sellIn).toEqual(1);
+    });
+    it("does not change quality value", function () {
+      expect(testItem.itemTomorrow().quality).toEqual(80);
+    });
+  });
+});
+
 describe("Item", function () {
 
   var testItem;
@@ -10,12 +23,6 @@ describe("Item", function () {
     describe('given that it is not sulfuras', function () {
       it('should reduce sellIn value by one', function () {
         expect(testItem.itemTomorrow().sellIn).toEqual(2);
-      });
-    });
-    describe('given that the item is sulfuras', function () {
-      it('should not reduce sellIn value', function () {
-        testItem = new Sulfuras('sulfuras', 1, 80);
-        expect(testItem.itemTomorrow().sellIn).toEqual(1);
       });
     });
     describe("#qualityTomorrow", function () {
@@ -50,18 +57,6 @@ describe("Item", function () {
           it("should be two more than current quality", function () {
             var testItem = new AgedBrie('brie', 0, 1);
             expect(testItem.itemTomorrow().quality).toEqual(3);
-          });
-        });
-      });
-      describe("given Sulfuras", function () {
-        it("should not change quality value", function () {
-          var testItem = new Sulfuras('sulfuras', 1, 80);
-          expect(testItem.itemTomorrow().quality).toEqual(80);
-        });
-        describe("given original quality is greater than 50", function () {
-          it("should not change quality value", function () {
-            var testItem = new Sulfuras('sulfuras', 1, 80);
-            expect(testItem.itemTomorrow().quality).toEqual(80);
           });
         });
       });
