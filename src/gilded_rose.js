@@ -31,10 +31,6 @@ class AgedBrie extends Item {
 }
 
 class Sulfuras extends Item {
-  _calculateDepreciation () {
-    return 0;
-  }
-
   itemTomorrow(){
     return this;
   }
