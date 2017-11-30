@@ -58,12 +58,12 @@ describe('BackStagePass', function () {
 
 });
 
-describe("Item", function () {
+describe('StandardItem', function () {
 
   var testItem;
 
   beforeEach(function () {
-    testItem = new Item('apple', 3, 0);
+    testItem = new StandardItem('apple', 3, 0);
   });
 
   describe('#itemTomorrow', function () {
@@ -79,13 +79,13 @@ describe("Item", function () {
       describe("given the item is not brie, sulfuras, backstage pass or conjured", function () {
         describe("given the item is within its sell-by-date", function () {
           it("should by one less than current quality", function () {
-            var testItem = new Item('apple', 3, 3);
+            var testItem = new StandardItem('apple', 3, 3);
             expect(testItem.itemTomorrow().quality).toEqual(2);
           });
         });
         describe("given the item has expired", function () {
           it("should be two less than current quality", function () {
-            var testItem = new Item('apple', 0, 3);
+            var testItem = new StandardItem('apple', 0, 3);
             expect(testItem.itemTomorrow().quality).toEqual(1);
           });
         });

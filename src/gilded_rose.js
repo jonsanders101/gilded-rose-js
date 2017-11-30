@@ -4,6 +4,9 @@ class Item {
     this.sellIn = sellIn;
     this.quality = quality;
   }
+}
+
+class StandardItem extends Item {
 
   itemTomorrow() {
     this.quality = this._qualityTomorrow();
@@ -23,7 +26,7 @@ class Item {
   }
 }
 
-class AgedBrie extends Item {
+class AgedBrie extends StandardItem {
   _calculateDepreciation () {
     return this.sellIn <= 0 ? (-2):(-1);
   }
@@ -35,7 +38,7 @@ class Sulfuras extends Item {
   }
 }
 
-class BackStagePass extends Item {
+class BackStagePass extends StandardItem {
   _calculateDepreciation () {
     if (this.sellIn === 0) {
       return this.quality;
