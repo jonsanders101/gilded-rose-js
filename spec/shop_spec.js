@@ -15,8 +15,7 @@ describe("Shop", function () {
       expect(mockItem.itemTomorrow).toHaveBeenCalled();
     });
     it("should return a list of updated items", function () {
-      itemsTomorrow = shop.updateStock(shop.items);
-      expect(itemsTomorrow).toEqual([itemTomorrow]);
+      expect(shop.updateStock(shop.items)).toEqual([itemTomorrow]);
     });
   });
 });
