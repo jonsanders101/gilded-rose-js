@@ -11,6 +11,25 @@ describe('Sulfuras', function () {
   });
 });
 
+describe('AgedBrie', function () {
+  describe('#itemTomorrow', function () {
+    it('increases quality value by 1', function () {
+      var testBrie = new AgedBrie('brie', 1, 1);
+      expect(testBrie.itemTomorrow().quality).toEqual(2);
+    });
+    it('increases quality value to a maximum of 50', function () {
+      var testBrie = new AgedBrie('brie', 3, 50);
+      expect(testBrie.itemTomorrow().quality).toEqual(50);
+    });
+    describe('given that the sellIn value is 0 or less', function () {
+      it('increases quality by 2', function () {
+        var testBrie = new AgedBrie('brie', 0, 1);
+        expect(testBrie.itemTomorrow().quality).toEqual(3);
+      });
+    });
+  });
+});
+
 describe("Item", function () {
 
   var testItem;
@@ -44,22 +63,6 @@ describe("Item", function () {
         });
       });
 
-      describe("given AgedBrie", function () {
-        it("should be one more than current quality", function () {
-          var testItem = new AgedBrie('brie', 1, 1);
-          expect(testItem.itemTomorrow().quality).toEqual(2);
-        });
-        it("should never be higher than 50", function () {
-          var testItem = new AgedBrie('brie', 3, 50);
-          expect(testItem.itemTomorrow().quality).toEqual(50);
-        });
-        describe("given it is passed expiry", function () {
-          it("should be two more than current quality", function () {
-            var testItem = new AgedBrie('brie', 0, 1);
-            expect(testItem.itemTomorrow().quality).toEqual(3);
-          });
-        });
-      });
       describe("given BackStagePass", function () {
         describe("given there are more than 10 days until expiry", function () {
           it("should increase by 1", function () {
