@@ -12,7 +12,6 @@ class Item {
   }
 
   _qualityTomorrow () {
-    if (this.quality > 50) return this.quality;
     let qualityTomorrow = this.quality - this._calculateDepreciation();
     if (qualityTomorrow < 0) return 0;
     if (qualityTomorrow >= 50) return 50;
