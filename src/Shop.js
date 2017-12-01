@@ -4,8 +4,8 @@
       this.items = items;
     }
 
-    updateStock (items) {
-      return items.map(function(item) {
+    updateStock () {
+      return this.items.map(function(item) {
         return item.itemTomorrow();
       });
     }
