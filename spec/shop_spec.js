@@ -1,7 +1,6 @@
 describe("Shop", function () {
-
   describe('#updateStock', function () {
-    var itemTomorrow, mockItem, shop;
+    let mockItemTomorrow, mockItem, shop;
 
     beforeEach(function() {
       mockItemTomorrow = {};
