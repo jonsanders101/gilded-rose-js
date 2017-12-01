@@ -19,10 +19,17 @@ describe('StandardItem', function () {
         expect(testItem.itemTomorrow().sellIn).toEqual(2);
       });
     });
-    describe('given that the sellIn value is 0 or less', function () {
+    describe('given that the sellIn value is 0', function () {
       it('increases quality value by 2', function () {
         testItem.quality = 3;
         testItem.sellIn = 0;
+        expect(testItem.itemTomorrow().quality).toEqual(1);
+      });
+    });
+    describe('given that the sellIn value is less than 0', function () {
+      it('increases quality value by 2', function () {
+        testItem.quality = 3;
+        testItem.sellIn = -1;
         expect(testItem.itemTomorrow().quality).toEqual(1);
       });
     });
