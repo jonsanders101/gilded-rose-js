@@ -17,9 +17,15 @@ describe('BackStagePass', function () {
       expect(testPass.itemTomorrow().quality).toEqual(23);
     });
   });
-  describe('given that the sellIn value is 0 or less', function () {
+  describe('given that the sellIn value is 0', function () {
     it('sets quality value to 0', function () {
       var testPass = new BackStagePass('pass', 0, 20);
+      expect(testPass.itemTomorrow().quality).toEqual(0);
+    });
+  });
+  describe('given that the sellIn value is less than 0', function () {
+    it('sets quality value to 0', function () {
+      var testPass = new BackStagePass('pass', -1, 20);
       expect(testPass.itemTomorrow().quality).toEqual(0);
     });
   });
