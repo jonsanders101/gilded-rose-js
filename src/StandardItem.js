@@ -1,4 +1,4 @@
-(function(exports){
+(function (exports) {
   class StandardItem extends Item {
 
     itemTomorrow() {

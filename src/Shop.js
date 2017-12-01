@@ -1,11 +1,11 @@
-(function(exports){
+(function (exports) {
   class Shop {
-    constructor(items=[]){
+    constructor (items=[]) {
       this.items = items;
     }
 
     updateStock () {
-      return this.items.map(function(item) {
+      return this.items.map(function (item) {
         return item.itemTomorrow();
       });
     }

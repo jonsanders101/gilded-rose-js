@@ -1,4 +1,4 @@
-(function(exports){
+(function (exports) {
   class Sulfuras extends Item {
     itemTomorrow(){
       return this;
