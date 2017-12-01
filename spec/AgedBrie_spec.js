@@ -14,5 +14,11 @@ describe('AgedBrie', function () {
         expect(testBrie.itemTomorrow().quality).toEqual(3);
       });
     });
+    describe('given that the sellIn value is less than 0', function () {
+      it('increases quality by 2', function () {
+        var testBrie = new AgedBrie('brie', -1, 1);
+        expect(testBrie.itemTomorrow().quality).toEqual(3);
+      });
+    });
   });
 });
