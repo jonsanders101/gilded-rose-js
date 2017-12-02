@@ -1,6 +1,6 @@
 ;(function (exports) {
   class Sulfuras extends Item {
-    itemTomorrow(){
+    itemTomorrow () {
       return this;
     }
   }

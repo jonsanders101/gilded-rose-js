@@ -1,7 +1,6 @@
 ;(function (exports) {
   class StandardItem extends Item {
-
-    itemTomorrow() {
+    itemTomorrow () {
       this.quality = this._qualityTomorrow();
       this.sellIn--;
       return this;
