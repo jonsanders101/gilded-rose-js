@@ -1,4 +1,4 @@
-(function (exports) {
+;(function (exports) {
   class BackStagePass extends StandardItem {
     _calculateDepreciation () {
       switch (true) {

@@ -1,4 +1,4 @@
-(function (exports) {
+;(function (exports) {
   class Item {
     constructor(name, sellIn, quality){
       this.name = name;
