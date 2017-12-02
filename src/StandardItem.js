@@ -1,4 +1,5 @@
 ;(function (exports) {
+  'use strict';
   class StandardItem extends Item {
     itemTomorrow () {
       this.quality = this._qualityTomorrow();
