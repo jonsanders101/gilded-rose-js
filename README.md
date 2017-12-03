@@ -3,7 +3,7 @@ Gilded Rose Kata
 
 This is my solution to the 'Gilded Rose' kata in JavaScript.
 
-The 'Gilded Rose' imagines a shop whose items change in quality over time. The program calculates the new quality value of each item each new day.The kata involves refactoring legacy code in order to simplify adding new behaviour to it.
+The 'Gilded Rose' imagines a shop whose items change in quality over time. The program calculates the new quality value of each item for each new day. The kata involves refactoring legacy code and extending its behaviour.
 
 See below for the original specification. I have used Emily Bache's JavaScript translation of the original kata which can be found [here](https://github.com/emilybache/GildedRose-Refactoring-Kata) as my starting point.
 
@@ -63,41 +63,19 @@ $ open TexttestFixture.html
 $ open SpecRunner.html
 ```
 
-## Notes on approach
+## Notes on Approach
 
-At a glance, there are numerous problems with this code. As a means of keeping track of the areas of the code I am focussing on improving, I will keep a small list here of observations I can work on and tasks already completed.
+I began by test-driving a new implementation which delegated responsibility for how each item should depreciate/appreciate in value to a collection of new item objects, making use of inheritance and polymorphism. This eliminates the original `#updateQuality` method's use of string values to determine the rule to apply.
 
-I test-drove a new method to calculate the value of an item tomorrow using a combination of the task specification and the existing legacy code. There were occasionally ambiguities or inconsistencies between the specification and the legacy code, but I incorporated these into the implementation of the `tomorrowQuality` method to ensure I was porting the same behaviour from the legacy code.
+For most items, `#_calculateDepreciation` determines the change in value. The only exception is 'Sulfuras', whose state never changes. Negative return values result in an increase in quality. I kept it this way round, since most items which appreciate in value are special cases.
 
-Spec doesn't mention it, but brie depreciates by two after expiry. Again, incorporating it into my code to stay loyal to behaviour of source code
+When writing test cases for the new implementation, I used a combination of the original specification and the behaviour I could observe in the TexttestFixture. I have not changed the TexttestFixture, besides increasing the number of iterations it displays, and making it instantiate the newly created set of objects rather than the original 'Item'.
 
-### Tasks done
-* Passed the initial failing test
+The original specification below does not entirely cover the behaviour of the existing legacy code; for instance, it does not mention that "Aged Brie" should increase in value at double the rate once it is past its sell-by date. Since there is no client to consult to clarify the intended behaviour, I had to treat the observed behaviour in the legacy code as the authority when writing unit tests.
 
-### Need work
-* Item needs to be guarded it ensure its quality is `0 > quality > 50`
-* Some ambiguity on whether an item can be initialised with a quality higher than 50.
-* If an item is responsible for increasing its quality, the shop can invoke `updateQuality` on it without worrying about the conditions.
-* Should I think of my overall design to this project and slowly change the legacy code into that design, or pick small pieces and work on it incrementally?
-* `updateQuality` changes state; the program would be better designed if there were a separate function - like `tomorrowQuality` which gave a return value we could test
-* Instructions state '“Aged Brie” actually increases in Quality the older it gets', but it doesn't say what happens when it reaches expiry. I am going to choose
-* Writing my own logic before deleting previous logic
-* Creating new item types which are extensions from the standard item class
-* The guard against `quality` rising above 50 is part of the qualityTomorrow method, and therefore applies to all items. Though it won't affect all items currently, as standard items only depreciate in value, it is a principle related to all items. Also, placing this line in the `Item` class avoids repetition of the line in multiple classes whose `quality` does increase, and repetition of tests in each item.
-* The specification says `The Quality of an item is never more than 50`. I'm choosing to interpret this to mean that an item can't be instantiated with a value greater than 80. At the moment, this is corrected at the first `qualityTomorrow`.
-* Decided to work on a new branch 'update-quality' to begin refactoring the original `#updateQuality` method.
-* Noticed that sellIn doesn't decrease fo Sulfuras; it's not only the case that the sell-in is irrelevant
-* Checking against strings is less reliable and requires longer lines of code than checking type
-* My qualityTomorrow method correct the quality if it's above 80; it's arguable that it should do this because the specification states that quality should never be above 50. However, given that:
-* the previous program does not reduce the quality;
-* and there is no explicit instruction that quality values already higher than 50 should be reduced either at initialisation or when the quality is updated
-I'm going to change this
+I then copied the unit tests for my new implementation to test the original code. I gradually used my new implementation to refactor the existing '#updateQuality' method before eventually replacing it entirely, ensuring I wasn't changing the original behaviour.
 
-* Added `if (this.quality > 50) return this.quality;` to code which feels pointless, against my design, but loyal to the original code.
-
-Improve existing test
-* Replaced 'guilded rose spec' with separate specs for shop and item.
-* Replaced new Item with a mock
+Finally, I broke apart the classes into separate files and implemented the new 'Conjured Item' described in the specification.
 
 ## Original specification
 
