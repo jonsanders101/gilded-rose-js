@@ -1,3 +1,5 @@
+'use strict';
+
 ;(function (exports) {
   class AgedBrie extends StandardItem {
     _calculateDepreciation () {

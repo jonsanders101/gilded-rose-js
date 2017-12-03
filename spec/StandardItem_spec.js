@@ -1,3 +1,5 @@
+'use strict';
+
 describe('StandardItem', function () {
   describe('#itemTomorrow', function () {
     it('reduces sellIn value by 1', function () {

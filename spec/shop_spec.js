@@ -1,3 +1,5 @@
+'use strict';
+
 describe("Shop", function () {
   describe('#updateStock', function () {
     let mockItemTomorrow, mockItem, shop;

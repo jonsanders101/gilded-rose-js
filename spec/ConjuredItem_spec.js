@@ -1,3 +1,5 @@
+'use strict';
+
 describe('ConjuredItem', function () {
   describe('given that the sellIn value is greater than 0', function () {
     it('reduces quality value by 2', function () {

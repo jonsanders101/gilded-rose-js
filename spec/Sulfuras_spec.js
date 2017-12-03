@@ -1,3 +1,5 @@
+'use strict';
+
 describe('Sulfuras', function () {
   describe('#itemTomorrow', function () {
     let testSulfuras = new Sulfuras('sulfuras', 1, 80);

@@ -1,3 +1,5 @@
+'use strict';
+
 describe('AgedBrie', function () {
   describe('#itemTomorrow', function () {
     it('increases quality value by 1', function () {

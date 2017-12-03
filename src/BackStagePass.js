@@ -1,5 +1,6 @@
+'use strict';
+
 ;(function (exports) {
-  'use strict';
   class BackStagePass extends StandardItem {
     _calculateDepreciation () {
       switch (true) {

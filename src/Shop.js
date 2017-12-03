@@ -1,5 +1,6 @@
+'use strict';
+
 ;(function (exports) {
-  'use strict';
   class Shop {
     constructor (items=[]) {
       this.items = items;

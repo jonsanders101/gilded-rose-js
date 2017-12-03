@@ -1,3 +1,5 @@
+'use strict';
+
 describe('BackStagePass', function () {
   it('increases quality value to a maximum of 50', function () {
     let testPass = new BackStagePass('pass', 11, 50);
